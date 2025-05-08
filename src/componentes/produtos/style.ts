@@ -40,7 +40,10 @@ borderWidth: 1,
 borderColor: themas.cores.roxo,
 textAlign: "center",
 width: "100%",
-
+fontSize: 15,
+color: themas.cores.pretoFonte,
+shadowColor: "black",
+backgroundColor: "white",
 
 },
 

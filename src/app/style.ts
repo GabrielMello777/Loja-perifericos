@@ -9,12 +9,25 @@ export const style = StyleSheet.create({
 
 produtos:{
 
-paddingLeft: 50,
+alignItems: "center",
+justifyContent: "center",
+textAlign: "center",
 
 
  
 },
 
+bara:{
+
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    paddingBottom: 10,
+    borderWidth: 2,
+    borderRadius: 40,
+
+},
 
 
 });

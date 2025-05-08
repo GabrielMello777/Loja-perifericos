@@ -37,8 +37,7 @@ export function Produto(props: ProdutoProps) {
   return (
 
 
-<View style={style.itens}> 
-
+<LinearGradient style={style.itens} colors={['#800080', '#ffff']}>
       <Text style={style.txtGrande}>{titulo}</Text>
 
       <Text {...props}>{nome}</Text>
@@ -52,7 +51,6 @@ export function Produto(props: ProdutoProps) {
 
       <Text {...props} style={style.desc} >{descricao}</Text>
 
-    
-      </View>
+      </LinearGradient>
   );
 }

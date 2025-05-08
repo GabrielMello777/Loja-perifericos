@@ -1,4 +1,4 @@
-import { Text, View, Image, ScrollView, SafeAreaView, Alert, TouchableOpacity, Button } from "react-native";
+import { Text, View, Image, ScrollView, SafeAreaView, Alert, TouchableOpacity, Button, StatusBar } from "react-native";
 import { Link } from "expo-router";
 import { Produto } from "../componentes/produtos/index";
 import React, { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { style } from "./style";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Camera } from 'expo-camera';
 import { CameraType } from 'expo-camera/build/Camera.types';
+import { Botao } from "../componentes/botao";
 
 export default function Index() {
   const [imagem, setImagem] = useState(require("../imgs/image.png"));
@@ -35,30 +36,51 @@ export default function Index() {
       <ScrollView style={{ flex: 1 }}>
         <View>
 
+<StatusBar backgroundColor={"white"}>
+  
+</StatusBar>
 
 
+<View style={style.bara}>
 
+<Text style={{paddingTop: 10}}>Bem Vindo a loja perifericos</Text>
 
-          <Text>Pagar: {pagar}</Text>
+<Text>Total a pagar: {pagar}</Text>
+
+</View>
+
 
           <View style={style.produtos}>
-            <Produto titulo="Gabriel" imagem={require("../imgs/image.png")} valor={[1]} descricao="Fone de ouvido muito daora" />
-            <Text>Total deste produto: {total[1]}</Text>
+            <Produto titulo="Gabriel"imagem={{ uri: "https://m.media-amazon.com/images/I/514n0rnHIgL._AC_UF1000,1000_QL80_.jpg" }} valor={[1]} descricao="Fone de ouvido muito daora" />
 
-            <TouchableOpacity onPress={() => somarVal(1)}>
-              <Text>fazer 1</Text>
-            </TouchableOpacity>
+            <View style={{justifyContent: "center", alignItems: "center",}}>
+<Text>Total deste produto: {total[1]}</Text>
 
-            <Produto titulo="DOIS DOIS" imagem={require("../imgs/image.png")} valor={[2]} q={2} />
-            <Text>Total deste produto: {total[2]}</Text>
+<Botao onPress={() => somarVal(1)} titulo="Comprar produto 2" texto="Comprar"> 
+        
 
-            <TouchableOpacity onPress={() => somarVal(2)}>
-              <Text>fazer 2</Text>
-            </TouchableOpacity>
+            </Botao>
+
+            </View>
+
+            <Produto titulo="DOIS DOIS" 
+            imagem={{ uri: "https://conteudoproduto.magazineluiza.com.br/22/226948700/img/03.gif" }} 
+            valor={[2]} descricao="mouse gamer"/>
+
+<View style={{justifyContent: "center", alignItems: "center",}}>
+<Text>Total deste produto: {total[2]}</Text>
+
+<Botao onPress={() => somarVal(2)} titulo="Comprar produto 2" texto="Comprar"> 
+        
+
+            </Botao>
+
+            </View>
+
+
           </View>
         </View>
 
-        <Link href="/dois"> Ir</Link>
       </ScrollView>
     </SafeAreaView>
   );

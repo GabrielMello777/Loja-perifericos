@@ -12,8 +12,8 @@ export const themas={
         bg:'rgba(168, 168, 168, 0.55)',
         gray:'rgba(117, 117, 117, 0.466)',
         cinzaTransparente:'rgba(124, 124, 124, 0.23)',
-        transparente: 'rgba(255, 255, 255, 0.33)'
-        
+        transparente: 'rgba(255, 255, 255, 0.33)',
+        pretoFonte: "rgba(0, 0, 0, 0.73)",
     }
     
     
