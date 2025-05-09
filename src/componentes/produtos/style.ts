@@ -44,7 +44,7 @@ fontSize: 15,
 color: themas.cores.pretoFonte,
 shadowColor: "black",
 backgroundColor: "white",
-
+overflow: "hidden",
 },
 
 
@@ -56,7 +56,6 @@ itens:{
     textAlign: "center",
     borderWidth: 2,
     borderRadius: 40,
-    borderColor: themas.cores.preto,
     width: "90%",
     overflow: "hidden",
 }

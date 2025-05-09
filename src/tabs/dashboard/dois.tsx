@@ -1,8 +1,8 @@
 import { Text, View, Image, ScrollView, SafeAreaView} from "react-native";
 import { Link } from "expo-router";
-import {Produto} from "../componentes/produtos/index"
+import {Produto} from "../../componentes/produtos/index"
 import { useEffect, useState } from "react";
-import {soma} from "../funcoes/functions"
+import {soma} from "../../funcoes/functions"
 import AsyncStorage, { AsyncStorageStatic } from "@react-native-async-storage/async-storage";
 import { CameraView } from "expo-camera";
 

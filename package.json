@@ -1,5 +1,5 @@
 {
-  "name": "loja",
+  "name": "Loja Perifericos",
   "version": "1.0.0",
   "main": "expo-router/entry",
   "private": true,
@@ -9,7 +9,9 @@
     "@expo-google-fonts/roboto": "^0.3.0",
     "@react-native-async-storage/async-storage": "1.23.1",
     "@react-native-picker/picker": "2.9.0",
+    "@react-navigation/bottom-tabs": "^7.3.12",
     "expo": "^52.0.46",
+    "expo-camera": "~16.0.18",
     "expo-constants": "~17.0.8",
     "expo-font": "~13.0.4",
     "expo-linear-gradient": "~14.0.2",
@@ -19,13 +21,12 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-native": "^0.76.9",
-    "react-native-camera": "^4.2.1",
+    "react-native-reanimated": "~3.16.1",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-safe-area-context": "4.12.0",
     "react-native-screens": "~4.4.0",
     "react-native-web": "^0.19.13",
-    "react-use-downloader": "^1.2.10",
-    "expo-camera": "~16.0.18"
+    "react-use-downloader": "^1.2.10"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

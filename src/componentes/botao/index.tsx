@@ -6,16 +6,18 @@ import {style} from "./style";
 import { themas } from "../../global/themes";
 
 
-
 export function  Botao(props: TouchableOpacityProps & { titulo?: string, texto?: string}) {
 
 const {titulo, texto}= props;
+
+
 
 
 return(
 <>
 
 <View>
+    
 
 {titulo?<Text       style={{color:themas.cores.pretoFonte}}>{titulo || ""}</Text>
 :null}

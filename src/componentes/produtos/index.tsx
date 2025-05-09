@@ -11,6 +11,9 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { style } from "./style";
 import { LinearGradient } from "expo-linear-gradient";
+import Animated, { InterpolateRGB, Keyframe, useAnimatedStyle, useSharedValue, withTiming, Easing } 
+from 'react-native-reanimated';
+
 
 type ProdutoProps = TextInputProps &
   ImageProps & {
@@ -24,6 +27,7 @@ type ProdutoProps = TextInputProps &
     imagem: ImageSourcePropType;
   };
 
+
 export function Produto(props: ProdutoProps) {
   const {
     nome,
@@ -32,12 +36,46 @@ export function Produto(props: ProdutoProps) {
     descricao,
   } = props;
 
+const [cor,setCor]= useState("");
+let i=0;
 
 
+
+useEffect(() => {
+
+  const cores = [
+    "rgb(0, 255, 255)", 
+    "rgb(128, 0, 255)",
+    "rgb(255, 0, 0)",   
+    "rgb(255, 165, 0)", 
+    "rgb(0, 255, 0)",   
+    "rgb(255, 255, 0)", 
+  ];
+
+  const trocar = setInterval(() => {
+
+setCor(cores[i]);
+
+i= (i+1) % cores.length;
+
+
+
+
+  }, 1000); 
+
+
+  return () => clearInterval(1000);
+
+
+}, []);
   return (
 
+<Animated.View 
 
-<LinearGradient style={style.itens} colors={['#800080', '#ffff']}>
+style={[ style.itens, {borderColor: cor}]}
+>
+
+  
       <Text style={style.txtGrande}>{titulo}</Text>
 
       <Text {...props}>{nome}</Text>
@@ -51,6 +89,6 @@ export function Produto(props: ProdutoProps) {
 
       <Text {...props} style={style.desc} >{descricao}</Text>
 
-      </LinearGradient>
-  );
+      </Animated.View>
+    );
 }
