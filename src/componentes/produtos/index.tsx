@@ -70,12 +70,9 @@ i= (i+1) % cores.length;
 }, []);
   return (
 
-<Animated.View 
 
-style={[ style.itens, {borderColor: cor}]}
->
 
-  
+  <LinearGradient colors={[cor, "rgba(0, 0, 0, 0.5)"]} style={style.itens}> 
       <Text style={style.txtGrande}>{titulo}</Text>
 
       <Text {...props}>{nome}</Text>
@@ -89,6 +86,5 @@ style={[ style.itens, {borderColor: cor}]}
 
       <Text {...props} style={style.desc} >{descricao}</Text>
 
-      </Animated.View>
-    );
+</LinearGradient>    );
 }

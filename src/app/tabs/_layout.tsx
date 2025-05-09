@@ -20,7 +20,20 @@ export default function TabsLayout() {
           )
         }}  
       />
-      <Tabs.Screen name="teste" options={{ title: "Teste" }} />
+      <Tabs.Screen name="teste" options={{ title: "Teste",
+      headerTitle: () => (
+
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image 
+                source={require("../../../assets/icon.png")} 
+                style={{ width: 120, height: 120, marginRight: 8 }} 
+                resizeMode="contain"
+              />
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Teste</Text>
+            </View>
+      )
+    }}
+      />
     </Tabs>
   );
 }

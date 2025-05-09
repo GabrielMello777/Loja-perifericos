@@ -99,7 +99,7 @@ export default function Index() {
             <Produto
               titulo="Fone gamer: PhantomX Pro"
               imagem={{
-                uri: "https://m.media-amazon.com/images/I/514n0rnHIgL._AC_UF1000,1000_QL80_.jpg",
+                uri: "https://www.sades.com.tw/image/data/new/20210507142350.gif",
               }}
               valor={[1]}
               descricao="Fone gamer com drivers de 50mm, cancelamento de ruído ativo e microfone retrátil. Design ergonômico com almofadas de espuma de memória e iluminação RGB personalizável."
