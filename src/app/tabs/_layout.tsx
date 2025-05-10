@@ -20,7 +20,7 @@ export default function TabsLayout() {
           )
         }}  
       />
-      <Tabs.Screen name="teste" options={{ title: "Teste",
+      <Tabs.Screen name="Comprar" options={{ title: "Comprar",
       headerTitle: () => (
 
                   <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -29,7 +29,7 @@ export default function TabsLayout() {
                 style={{ width: 120, height: 120, marginRight: 8 }} 
                 resizeMode="contain"
               />
-              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Teste</Text>
+              <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Comprar</Text>
             </View>
       )
     }}

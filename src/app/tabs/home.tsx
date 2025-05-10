@@ -18,7 +18,7 @@ export default function Index() {
   
 
   
-  const [total, setTotal] = useState([0, 0, 0]); 
+  const [total, setTotal] = useState([100, 250, 200]); 
   const [pagar, setPagar] = useState(0.0);
   const Tab= createBottomTabNavigator();
 
@@ -38,50 +38,54 @@ export default function Index() {
       setPagar(Number(pagarSalvo) || 0);
     };
 
+  const intervalId = setInterval(() => {
+    salvaDados();
+  }, 5000); 
+
+
     salvaDados();
   }, []);
 
-  const calcularTotal = async () => {
-    const soma = total.reduce((acc, val) => acc + Number(val), 0);
-    setPagar(soma);
-    await AsyncStorage.setItem('total', String(soma));
-  };
+const calcularTotal = async (valores: number[]) => {
+  const soma = valores.reduce((acc, val) => acc + Number(val), 0);
+  setPagar(soma);
+  await AsyncStorage.setItem('total', String(soma));
+};
 
   // Somar item
-  const somarVal = async (i: number) => {
-    const novoTotal = [...total];
-    novoTotal[i] = novoTotal[i] + i;
-    setTotal(novoTotal);
+const somarVal = async (valor: number, indice: number) => {
+  const novoTotal = [...total];
+  novoTotal[indice] = Math.max(0, novoTotal[indice] + valor); 
+  setTotal(novoTotal);
 
-    switch (i) {
-      case 1:
-        await AsyncStorage.setItem('p1', String(novoTotal[1]));
-        break;
-      case 2:
-        await AsyncStorage.setItem('p2', String(novoTotal[2]));
-        break;
-    }
+  switch (indice) {
+    case 1:
+      await AsyncStorage.setItem('p1', String(novoTotal[1]));
+      break;
+    case 2:
+      await AsyncStorage.setItem('p2', String(novoTotal[2]));
+      break;
+  }
 
-    calcularTotal();
-  };
+  calcularTotal(novoTotal);
+};
 
-  // Diminuir item
-  const diminuirVal = async (i: number) => {
-    const novoTotal = [...total];
-    novoTotal[i] = Math.max(0, novoTotal[i] - i); 
-    setTotal(novoTotal);
+const diminuirVal  = async (valor: number, indice: number) => {
+  const novoTotal = [...total];
+  novoTotal[indice] = Math.max(0, novoTotal[indice] - valor); 
+  setTotal(novoTotal);
 
-    switch (i) {
-      case 1:
-        await AsyncStorage.setItem('p1', String(novoTotal[1]));
-        break;
-      case 2:
-        await AsyncStorage.setItem('p2', String(novoTotal[2]));
-        break;
-    }
+  switch (indice) {
+    case 1:
+      await AsyncStorage.setItem('p1', String(novoTotal[1]));
+      break;
+    case 2:
+      await AsyncStorage.setItem('p2', String(novoTotal[2]));
+      break;
+  }
 
-    calcularTotal();
-  };
+  calcularTotal(novoTotal);
+};
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -89,25 +93,30 @@ export default function Index() {
         <View>
           <StatusBar backgroundColor={"white"} />
 
-          <View style={style.bara}>
-            <Text style={{ paddingTop: 10 }}>Bem Vindo à loja de periféricos</Text>
-            <Text>Total a pagar: R$ {pagar}</Text>
+          <View style={[style.bara, { backgroundColor: "rgb(102, 0, 255)" , paddingBottom: 10}]}>
+            <Text style={{ paddingTop: 10, color: "rgb(255, 255, 255)"}}>Bem Vindo à loja de periféricos</Text>
+            <Text style={{ paddingTop: 10, color: "rgb(255, 255, 255)"}}>Total a pagar: R$ {pagar}</Text>
           </View>
 
-          <View style={style.produtos}>
+          <View style={[style.produtos, { paddingTop: 10, paddingBottom: 10 }]}>
             {/* Produto 1 */}
             <Produto
               titulo="Fone gamer: PhantomX Pro"
               imagem={{
                 uri: "https://www.sades.com.tw/image/data/new/20210507142350.gif",
               }}
+
               valor={[1]}
               descricao="Fone gamer com drivers de 50mm, cancelamento de ruído ativo e microfone retrátil. Design ergonômico com almofadas de espuma de memória e iluminação RGB personalizável."
             />
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <View style={{ justifyContent: "center", alignItems: "center", borderWidth: 1, 
+              borderColor: "black", paddingBottom: 10, borderRadius: 10, width: "90%", 
+              backgroundColor:"rgba(255, 255, 255, 0.33)" }}>
               <Text>Total deste produto: {total[1]}</Text>
-              <Botao onPress={() => somarVal(1)} titulo="Comprar produto 1" texto="Comprar" />
-              <Botao onPress={() => diminuirVal(1)} titulo="Retirar produto 1" texto="Retirar" />
+                            <Text>Preço: 250R$</Text>
+
+              <Botao onPress={() => somarVal(250,1)} titulo="Comprar produto 1" texto="Comprar" />
+              <Botao onPress={() => diminuirVal(250,1)} titulo="Retirar produto 1" texto="Retirar" />
             </View>
 
             {/* Produto 2 */}
@@ -119,10 +128,16 @@ export default function Index() {
               valor={[2]}
               descricao="Mouse gamer com sensor de 16.000 DPI, design ergonômico e botões mecânicos. Iluminação RGB personalizável e resposta ultra-rápida para máxima precisão."
             />
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
+           
+             <View style={{ justifyContent: "center", alignItems: "center", borderWidth: 1, 
+              borderColor: "black", paddingBottom: 10, borderRadius: 10, width: "90%", 
+              backgroundColor:"rgba(255, 255, 255, 0.33)" }}>
+             
+             
               <Text>Total deste produto: {total[2]}</Text>
-              <Botao onPress={() => somarVal(2)} titulo="Comprar produto 2" texto="Comprar" />
-              <Botao onPress={() => diminuirVal(2)} titulo="Retirar produto 2" texto="Retirar" />
+              <Text>Preço: 200R$</Text>
+              <Botao onPress={() => somarVal(200, 2)} titulo="Comprar produto 2" texto="Comprar" />
+              <Botao onPress={() => diminuirVal(200, 2)} titulo="Retirar produto 2" texto="Retirar" />
             </View>
           </View>
 

@@ -37,42 +37,53 @@ export function Produto(props: ProdutoProps) {
   } = props;
 
 const [cor,setCor]= useState("");
+const [corDois,setCorDois]= useState("");
 let i=0;
 
 
 
-useEffect(() => {
+  useEffect(() => {
+    const cores = [
+      "rgb(0, 255, 255)", 
+      "rgb(128, 0, 255)",
+      "rgb(255, 0, 0)",   
+      "rgb(255, 165, 0)", 
+      "rgb(0, 255, 0)",   
+      "rgb(255, 255, 0)", 
+    ];
 
-  const cores = [
-    "rgb(0, 255, 255)", 
-    "rgb(128, 0, 255)",
-    "rgb(255, 0, 0)",   
-    "rgb(255, 165, 0)", 
-    "rgb(0, 255, 0)",   
-    "rgb(255, 255, 0)", 
-  ];
+    const coresD = [
+      "rgb(255, 87, 51)",   
+      "rgb(255, 195, 0)",  
+      "rgb(144, 12, 63)",  
+      "rgb(88, 24, 69)",  
+      "rgb(255, 111, 105)", 
+      "rgb(32, 191, 107)" 
+    ];
 
-  const trocar = setInterval(() => {
+    let i = 0;
+    let j = 0;
 
-setCor(cores[i]);
+    const trocar = setInterval(() => {
+      setCor(cores[i]);
+      i = (i + 1) % cores.length;
+    }, 1000);
 
-i= (i+1) % cores.length;
+    const trocarDois = setInterval(() => {
+      setCorDois(coresD[j]);
+      j = (j + 1) % coresD.length;
+    }, 1000);
 
-
-
-
-  }, 1000); 
-
-
-  return () => clearInterval(1000);
-
-
-}, []);
+    return () => {
+      clearInterval(trocar);
+      clearInterval(trocarDois);
+    };
+  }, []);
   return (
 
 
 
-  <LinearGradient colors={[cor, "rgba(0, 0, 0, 0.5)"]} style={style.itens}> 
+  <LinearGradient colors={[cor, "rgba(0, 0, 0, 0.5)"]} style={[style.itens,{borderColor: corDois}]}> 
       <Text style={style.txtGrande}>{titulo}</Text>
 
       <Text {...props}>{nome}</Text>
