@@ -24,7 +24,7 @@ return(
 
 <TouchableOpacity style={style.btn} {...props}>
 
-{ texto? <Text>{texto || ""}</Text>
+{ texto? <Text style={{color: "#E0E0E0"}}>{texto || ""}</Text>
 :null}
 </TouchableOpacity>
 

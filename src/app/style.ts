@@ -20,17 +20,16 @@ textAlign: "center",
  
 },
 
-bara:{
-
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    paddingBottom: 10,
-    borderWidth: 2,
-    borderRadius: 40,
-
-},
+bara: {
+  width: "100%",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
+  paddingVertical: 16,
+  backgroundColor: "rgb(102, 0, 255)", 
+  borderBottomLeftRadius: 20,
+  borderBottomRightRadius: 20,
+}
 
 
 });
