@@ -15,6 +15,7 @@ import { Botao } from "../../componentes/botao/index";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { Produto } from "../../componentes/produtos";
+import { Audio } from "expo-av";
 
 export default function Index() {
   
@@ -69,6 +70,15 @@ const calcularTotal = async (valores: number[]) => {
 
   // Somar item
 const somarVal = async (valor: number, indice: number) => {
+
+try {
+    const { sound } = await Audio.Sound.createAsync(require("../sounds/click.mp3"));
+    await sound.playAsync();
+  } catch (error) {
+    console.error("Erro ao tocar som:", error);
+  }
+
+
   const novoTotal = [...total];
   novoTotal[indice] = Math.max(0, novoTotal[indice] + valor); 
   setTotal(novoTotal);
@@ -87,11 +97,23 @@ const somarVal = async (valor: number, indice: number) => {
       await AsyncStorage.setItem("quant2", String(quantia));
       await AsyncStorage.setItem('p2', String(novoTotal[2]));
       break;
+
+          default:
+        Alert.alert("Produto sem estoque ❌");
+        break;
   }
   calcularTotal(novoTotal);
 };
 
 const diminuirVal  = async (valor: number, indice: number) => {
+
+  try {
+    const { sound } = await Audio.Sound.createAsync(require("../sounds/blip.mp3"));
+    await sound.playAsync();
+  } catch (error) {
+    console.error("Erro ao tocar som:", error);
+  }
+
   const novoTotal = [...total];
   novoTotal[indice] = Math.max(0, novoTotal[indice] - valor); 
   setTotal(novoTotal);
@@ -113,6 +135,9 @@ const diminuirVal  = async (valor: number, indice: number) => {
 
       default:
         Alert.alert("Produto sem estoque ❌");
+          setTotal(novoTotal);
+
+        break;
 
   }
 
